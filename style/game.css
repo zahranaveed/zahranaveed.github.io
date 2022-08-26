@@ -1,0 +1,78 @@
+/*<=============Google Font Link (Nunito)============>*/
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap");
+#game-start {
+  position: absolute;
+  top: 4rem;
+  right: 17rem;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  
+}
+body {
+  min-height: 100%;
+  max-width: 100%;
+  font-family: "Nunito", sans-serif;
+}
+.container-wrap {
+  min-height: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.game-wrap {
+  position: relative;
+  padding: 20px 0 0;
+}
+canvas {
+  position: relative;
+  aspect-ratio: auto 960 / 540;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 0 auto;
+  opacity: 40%;
+}
+.content{
+  color: #9f9f9f;
+  text-align: center;
+  padding: 0 20px;
+}
+.game-wrap p {
+  margin: 10px 0;
+  font-size: 18px;
+  line-height: .8em;
+}
+code {
+  background-color: var(--main-color);
+  line-height: 1.3em;
+  display: inline-block;
+  border-radius: 3px;
+  font-family: monospace;
+  padding: 1px 5px;
+  margin: 0 2px;
+}
+a span{
+  color: white;
+  text-decoration: none;
+  transition: .2s;
+  
+}
+a span:hover 
+  {
+    color: var(--main-color);
+    text-decoration: underline;
+  }
+
+.title {
+  font-size: 40px;
+  font-weight: 900;
+  margin: -10px 0;
+  
+}
+.title span{
+  font-size: 30px;
+  color: var(--main-color);
+}
