@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#f4f1e7">
 <meta name="description" content="Zahra Naveed — Software Developer, Mobile App Developer and AI Enthusiast.">
-<title>Zahra Naveed | Developer Portfolio 🐼</title>
+<title>Zahra Naveed | Developer Portfolio</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -905,6 +905,141 @@ footer {
     transition: none !important;
   }
 }
+
+/* DAD JOKE CORNER */
+.joke-widget {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 999;
+  font-family: inherit;
+}
+
+.joke-toggle {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 54px;
+  height: 54px;
+  border: 2px solid #fffdf7;
+  border-radius: 50%;
+  background: var(--green);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 5px 20px rgba(30, 50, 35, 0.2);
+  transition: transform 0.25s ease;
+}
+
+.joke-toggle:hover {
+  transform: rotate(-12deg) scale(1.08);
+}
+
+.joke-ping {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 11px;
+  height: 11px;
+  border: 2px solid #fffdf7;
+  border-radius: 50%;
+  background: #c99b54;
+}
+
+.joke-card {
+  position: absolute;
+  right: 0;
+  bottom: 68px;
+  width: 285px;
+  padding: 17px;
+  border: 1px solid rgba(44, 74, 54, 0.13);
+  border-radius: 18px;
+  background: #fffdf7;
+  box-shadow: 0 12px 40px rgba(30, 50, 35, 0.16);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px) scale(0.96);
+  transform-origin: bottom right;
+  transition: 0.25s ease;
+}
+
+.joke-widget.open .joke-card {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0) scale(1);
+}
+
+.joke-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(44, 74, 54, 0.12);
+  color: var(--green);
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+
+.joke-close {
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.joke-content {
+  min-height: 105px;
+  padding: 17px 2px 12px;
+}
+
+.joke-emoji {
+  font-size: 1.4rem;
+}
+
+.joke-content p {
+  margin: 9px 0 0;
+  color: var(--ink);
+  font-size: 0.88rem;
+  line-height: 1.6;
+  font-weight: 650;
+}
+
+.new-joke-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 13px;
+  border: 0;
+  border-radius: 10px;
+  background: #e6ebdf;
+  color: var(--green);
+  font-family: inherit;
+  font-size: 0.76rem;
+  font-weight: 850;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.new-joke-btn:hover {
+  background: #d8e2d2;
+}
+
+.new-joke-btn span {
+  font-size: 1rem;
+}
+
+@media (max-width: 560px) {
+  .joke-widget {
+    right: 15px;
+    bottom: 15px;
+  }
+
+  .joke-card {
+    width: min(285px, calc(100vw - 30px));
+  }
+}
 </style>
 </head>
 
@@ -1359,6 +1494,96 @@ document.getElementById("copyEmail").addEventListener("click", async () => {
   }, 2600);
 
 });
+</script>
+
+
+<!-- FLOATING DAD JOKE WIDGET -->
+<div class="joke-widget" id="jokeWidget">
+  <div class="joke-card" id="jokeCard">
+    <div class="joke-header">
+      <span>🐼 Dad Joke Corner</span>
+      <button class="joke-close" id="closeJoke" aria-label="Close jokes">×</button>
+    </div>
+
+    <div class="joke-content">
+      <span class="joke-emoji">🥁</span>
+      <p id="dadJoke">Why don't programmers like nature? Too many bugs.</p>
+    </div>
+
+    <button class="new-joke-btn" id="newJoke">
+      Another one! <span>↗</span>
+    </button>
+  </div>
+
+  <button class="joke-toggle" id="jokeToggle" aria-label="Open Dad Joke Corner">
+    🥸
+    <span class="joke-ping"></span>
+  </button>
+</div>
+<script>
+  const jokes = [
+    "Why don't programmers like nature? Too many bugs. 🐛",
+    "There are 10 types of people in this world: those who understand binary, and those who don't.",
+    "I like my coffee like I like my IDEs... dark and free",
+    "undefined is not a function, but somehow, it's my life now. ｡🇯‌🇸‌",
+    "git push --force: because chaos is fun‌.",
+    "How do you comfort a JavaScript bug?You console it.",
+    "What is the oop way to become wealthy?Inheritance.",
+    "You know what screams “I’m insecure”? http:/",
+    "Why did the developer go broke? Because he used up all his cache. 💸",
+    "I told my computer I needed a break... now it won't stop sending me KitKat ads. 🍫",
+    "Why do Java developers wear glasses? Because they don't C#. 👓",
+    "What do you call a panda with no teeth? A gummy bear. 🐼",
+    "Why was the JavaScript developer sad? He didn't know how to 'null' his feelings. 😭",
+    "I asked my dog what's two minus two. He said nothing. 🐶",
+    "Why did the scarecrow win an award? He was outstanding in his field. 🌾",
+    "What is a programmer's favourite place to hang out? Foo Bar. 🍻",
+    "Why did the function break up with the variable? It needed more space. 💔",
+    "I used to hate facial hair, but then it grew on me. 🧔",
+    "What do you call a fake noodle? An impasta. 🍝",
+    "Why can't a bicycle stand on its own? It's two-tired. 🚲",
+    "What did the ocean say to the beach? Nothing, it just waved. 🌊",
+    "Why do programmers prefer dark mode? Because light attracts bugs. 🪲",
+    "I only know 25 letters of the alphabet. I don't know y. 🤷"
+  ];
+
+  const widget = document.getElementById("jokeWidget");
+  const toggle = document.getElementById("jokeToggle");
+  const close = document.getElementById("closeJoke");
+  const jokeText = document.getElementById("dadJoke");
+  const newJoke = document.getElementById("newJoke");
+
+  let lastJoke = -1;
+
+  function generateJoke() {
+    let index;
+
+    do {
+      index = Math.floor(Math.random() * jokes.length);
+    } while (index === lastJoke && jokes.length > 1);
+
+    lastJoke = index;
+    jokeText.style.opacity = 0;
+
+    setTimeout(() => {
+      jokeText.textContent = jokes[index];
+      jokeText.style.opacity = 1;
+    }, 150);
+  }
+
+  toggle.addEventListener("click", () => {
+    widget.classList.toggle("open");
+
+    if (widget.classList.contains("open")) {
+      generateJoke();
+    }
+  });
+
+  close.addEventListener("click", () => {
+    widget.classList.remove("open");
+  });
+
+  newJoke.addEventListener("click", generateJoke);
 </script>
 
 </body>
